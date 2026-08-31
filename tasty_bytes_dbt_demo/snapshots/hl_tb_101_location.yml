@@ -1,0 +1,9 @@
+version: 2
+
+snapshots:
+  - name: hl_tb_101_location
+    relation: source('tb_101', 'LOCATION')
+    config:
+      unique_key: location_id
+      strategy: timestamp
+      updated_at: updated_at

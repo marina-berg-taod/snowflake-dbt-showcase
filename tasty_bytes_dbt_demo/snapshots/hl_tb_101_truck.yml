@@ -1,0 +1,12 @@
+version: 2
+
+snapshots:
+  - name: hl_tb_101_truck
+    relation: source('tb_101', 'TRUCK')
+    config:
+      unique_key: truck_id
+      strategy: check
+      check_cols:
+        - primary_city
+        - region
+        - ev_flag

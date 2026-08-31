@@ -19,14 +19,6 @@ clean-targets: [target, dbt_modules]
 ## Models
 models:
   tasty_bytes:
-    10_historized_landing:
-      +materialized: view
-      +schema: >
-        {%- if target.name == "dev" -%}
-          {{ env_var('SNOWFLAKE_SCHEMA') }}
-        {%- else -%}
-          HISTORIZED_LANDING
-        {%- endif -%}
     20_base:
       +materialized: view
       +schema: >
@@ -34,14 +26,6 @@ models:
           {{ env_var('SNOWFLAKE_SCHEMA') }}
         {%- else -%}
           BASE
-        {%- endif -%}
-    30_extended_base:
-      +materialized: view
-      +schema: >
-        {%- if target.name == "dev" -%}
-          {{ env_var('SNOWFLAKE_SCHEMA') }}
-        {%- else -%}
-          EXTENDED_BASE
         {%- endif -%}
     50_businesscore:
       +materialized: table

@@ -1,0 +1,9 @@
+version: 2
+
+snapshots:
+  - name: hl_tb_101_customer_loyalty
+    relation: source('tb_101', 'CUSTOMER_LOYALTY')
+    config:
+      unique_key: customer_id
+      strategy: timestamp
+      updated_at: updated_at
