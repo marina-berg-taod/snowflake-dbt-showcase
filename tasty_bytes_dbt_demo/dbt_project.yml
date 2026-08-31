@@ -23,7 +23,7 @@ models:
       +materialized: view
       +schema: >
         {%- if target.name == "dev" -%}
-          {{ env_var('SNOWFLAKE_SCHEMA') }}
+          {{ env_var('DBT_SNOWFLAKE_SCHEMA') }}
         {%- else -%}
           BASE
         {%- endif -%}
@@ -31,7 +31,7 @@ models:
       +materialized: table
       +schema: >
         {%- if target.name == "dev" -%}
-          {{ env_var('SNOWFLAKE_SCHEMA') }}
+          {{ env_var('DBT_SNOWFLAKE_SCHEMA') }}
         {%- else -%}
           BUSINESS_CORE
         {%- endif -%}
@@ -43,7 +43,7 @@ models:
       +materialized: table
       +schema: >
         {%- if target.name == "dev" -%}
-          {{ env_var('SNOWFLAKE_SCHEMA') }}
+          {{ env_var('DBT_SNOWFLAKE_SCHEMA') }}
         {%- else -%}
           MARTS
         {%- endif -%}
@@ -53,7 +53,7 @@ snapshots:
   tasty_bytes:
     +target_schema: >
       {%- if target.name == "dev" -%}
-        {{ env_var('SNOWFLAKE_SCHEMA') }}
+        {{ env_var('DBT_SNOWFLAKE_SCHEMA') }}
       {%- else -%}
         HISTORIZED_LANDING
       {%- endif -%}
