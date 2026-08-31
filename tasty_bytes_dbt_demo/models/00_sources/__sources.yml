@@ -144,9 +144,8 @@ sources:
       data_tests:
         - not_null
         - relationships:
-            arguments:
-              to: source('tb_101', 'ORDER_HEADER')
-              field: ORDER_ID
+            to: source('tb_101', 'ORDER_HEADER')
+            field: ORDER_ID
     - name: MENU_ITEM_ID
       description: 'Foreign key to menu'
       data_tests:
@@ -186,17 +185,15 @@ sources:
       data_tests:
         - not_null
         - relationships:
-            arguments:
-              to: source('tb_101', 'TRUCK')
-              field: TRUCK_ID
+            to: source('tb_101', 'TRUCK')
+            field: TRUCK_ID
     - name: LOCATION_ID
       description: 'Foreign key to location'
       data_tests:
         - not_null
         - relationships:
-            arguments:
-              to: source('tb_101', 'LOCATION')
-              field: LOCATION_ID
+            to: source('tb_101', 'LOCATION')
+            field: LOCATION_ID
     - name: CUSTOMER_ID
       description: 'Customer identifier'
     - name: DISCOUNT_ID
@@ -281,9 +278,8 @@ sources:
       description: 'Foreign key to franchise'
       data_tests:
         - relationships:
-            arguments:
-              to: source('tb_101', 'FRANCHISE')
-              field: FRANCHISE_ID
+            to: source('tb_101', 'FRANCHISE')
+            field: FRANCHISE_ID
     - name: TRUCK_OPENING_DATE
       description: 'Date truck began operations'
       data_tests:

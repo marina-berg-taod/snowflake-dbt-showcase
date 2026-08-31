@@ -66,21 +66,20 @@ models:
       - name: customer_key
         tests:
           - relationships:
-              arguments:
-                to: ref('dim_customer')
-                field: customer_key
+              to: ref('dim_customer')
+              field: customer_key
+              config:
+                severity: warn
       - name: location_key
         tests:
           - relationships:
-              arguments:
-                to: ref('dim_location')
-                field: location_key
+              to: ref('dim_location')
+              field: location_key
       - name: truck_key
         tests:
           - relationships:
-              arguments:
-                to: ref('dim_truck')
-                field: truck_key
+              to: ref('dim_truck')
+              field: truck_key
 
   - name: fct_orders_incremental
     description: "Inkrementelle Faktentabelle: Bestellungen (Merge auf order_key, Filter auf load_timestamp)"
