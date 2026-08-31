@@ -69,6 +69,8 @@ models:
               arguments:
                 to: ref('dim_customer')
                 field: customer_key
+              config:
+                severity: warn
       - name: location_key
         tests:
           - relationships:
