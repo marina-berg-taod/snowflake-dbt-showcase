@@ -3,21 +3,21 @@ tasty_bytes:
   outputs:
     dev:
       type: snowflake
-      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
-      user: "{{ env_var('SNOWFLAKE_USER') }}"
-      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
-      role: "{{ env_var('SNOWFLAKE_ROLE') }}"
-      database: TASTY_BYTES_DBT_DEV_DB
-      schema: "{{ env_var('SNOWFLAKE_SCHEMA') }}"
-      warehouse: COMPUTE_WH
+      account: "{{ env_var('DBT_SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('DBT_SNOWFLAKE_USER') }}"
+      password: "{{ env_var('DBT_ENV_SECRET_SNOWFLAKE_PASSWORD') }}"
+      role: "{{ env_var('DBT_SNOWFLAKE_ROLE') }}"
+      database: "{{ env_var('DBT_SNOWFLAKE_DATABASE') }}"
+      schema: "{{ env_var('DBT_SNOWFLAKE_SCHEMA') }}"
+      warehouse: "{{ env_var('DBT_SNOWFLAKE_WAREHOUSE') }}"
       threads: 8
     prod:
       type: snowflake
-      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
-      user: "{{ env_var('SNOWFLAKE_USER') }}"
-      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
-      role: "{{ env_var('SNOWFLAKE_ROLE') }}"
-      database: TASTY_BYTES_DBT_PROD_DB
-      schema: PROD
-      warehouse: COMPUTE_WH
+      account: "{{ env_var('DBT_SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('DBT_SNOWFLAKE_USER') }}"
+      password: "{{ env_var('DBT_ENV_SECRET_SNOWFLAKE_PASSWORD') }}"
+      role: "{{ env_var('DBT_SNOWFLAKE_ROLE') }}"
+      database: "{{ env_var('DBT_SNOWFLAKE_DATABASE') }}"
+      schema: "{{ env_var('DBT_SNOWFLAKE_SCHEMA') }}"
+      warehouse: "{{ env_var('DBT_SNOWFLAKE_WAREHOUSE') }}"
       threads: 8
