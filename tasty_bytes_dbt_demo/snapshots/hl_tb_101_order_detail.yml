@@ -1,0 +1,9 @@
+version: 2
+
+snapshots:
+  - name: hl_tb_101_order_detail
+    relation: source('tb_101', 'ORDER_DETAIL')
+    config:
+      unique_key: order_detail_id
+      strategy: check
+      check_cols: all

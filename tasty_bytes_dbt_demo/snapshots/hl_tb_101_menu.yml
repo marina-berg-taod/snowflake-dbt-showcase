@@ -1,0 +1,9 @@
+version: 2
+
+snapshots:
+  - name: hl_tb_101_menu
+    relation: source('tb_101', 'MENU')
+    config:
+      unique_key: menu_id
+      strategy: timestamp
+      updated_at: updated_at

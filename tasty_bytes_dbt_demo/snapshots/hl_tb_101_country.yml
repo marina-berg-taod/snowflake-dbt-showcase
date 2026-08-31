@@ -1,0 +1,9 @@
+version: 2
+
+snapshots:
+  - name: hl_tb_101_country
+    relation: source('tb_101', 'COUNTRY')
+    config:
+      unique_key: country_id
+      strategy: timestamp
+      updated_at: updated_at

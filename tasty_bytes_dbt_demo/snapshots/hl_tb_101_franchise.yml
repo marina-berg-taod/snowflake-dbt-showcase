@@ -1,0 +1,9 @@
+version: 2
+
+snapshots:
+  - name: hl_tb_101_franchise
+    relation: source('tb_101', 'FRANCHISE')
+    config:
+      unique_key: franchise_id
+      strategy: timestamp
+      updated_at: updated_at

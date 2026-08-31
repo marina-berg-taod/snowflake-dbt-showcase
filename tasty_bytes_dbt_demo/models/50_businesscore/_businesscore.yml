@@ -1,0 +1,94 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: "Dimension: Kunden aus dem Kundenloyalitätsprogramm"
+    columns:
+      - name: customer_key
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+
+  - name: dim_location
+    description: "Dimension: Verkaufsstandorte"
+    columns:
+      - name: location_key
+        tests:
+          - unique
+          - not_null
+      - name: location_id
+        tests:
+          - not_null
+
+  - name: dim_menu
+    description: "Dimension: Menüeinträge und Kosten"
+    columns:
+      - name: menu_key
+        tests:
+          - unique
+          - not_null
+      - name: menu_id
+        tests:
+          - not_null
+
+  - name: dim_truck
+    description: "Dimension: Food Trucks"
+    columns:
+      - name: truck_key
+        tests:
+          - unique
+          - not_null
+      - name: truck_id
+        tests:
+          - not_null
+
+  - name: dim_date
+    description: "Dimension: Kalenderdaten"
+    columns:
+      - name: calendar_date
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_orders
+    description: "Faktentabelle: Bestellungen mit Verknüpfungen zu Dimensionen"
+    columns:
+      - name: order_key
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        tests:
+          - not_null
+      - name: customer_key
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_customer')
+                field: customer_key
+      - name: location_key
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_location')
+                field: location_key
+      - name: truck_key
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_truck')
+                field: truck_key
+
+  - name: fct_orders_incremental
+    description: "Inkrementelle Faktentabelle: Bestellungen (Merge auf order_key, Filter auf load_timestamp)"
+    columns:
+      - name: order_key
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        tests:
+          - not_null

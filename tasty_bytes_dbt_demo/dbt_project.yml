@@ -19,7 +19,41 @@ clean-targets: [target, dbt_modules]
 ## Models
 models:
   tasty_bytes:
-    staging:
+    20_base:
       +materialized: view
-    marts:
+      +schema: >
+        {%- if target.name == "dev" -%}
+          {{ env_var('SNOWFLAKE_SCHEMA') }}
+        {%- else -%}
+          BASE
+        {%- endif -%}
+    50_businesscore:
       +materialized: table
+      +schema: >
+        {%- if target.name == "dev" -%}
+          {{ env_var('SNOWFLAKE_SCHEMA') }}
+        {%- else -%}
+          BUSINESS_CORE
+        {%- endif -%}
+      dimensions:
+        +tags: bc_dimension
+      facts:
+        +tags: bc_fact
+    60_marts:
+      +materialized: table
+      +schema: >
+        {%- if target.name == "dev" -%}
+          {{ env_var('SNOWFLAKE_SCHEMA') }}
+        {%- else -%}
+          MARTS
+        {%- endif -%}
+
+## Snapshots
+snapshots:
+  tasty_bytes:
+    +target_schema: >
+      {%- if target.name == "dev" -%}
+        {{ env_var('SNOWFLAKE_SCHEMA') }}
+      {%- else -%}
+        HISTORIZED_LANDING
+      {%- endif -%}

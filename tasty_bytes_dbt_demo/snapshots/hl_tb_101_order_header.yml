@@ -1,0 +1,12 @@
+version: 2
+
+snapshots:
+  - name: hl_tb_101_order_header
+    relation: source('tb_101', 'ORDER_HEADER')
+    config:
+      unique_key: order_id
+      strategy: check
+      check_cols:
+        - order_channel
+        - order_amount
+        - order_total
