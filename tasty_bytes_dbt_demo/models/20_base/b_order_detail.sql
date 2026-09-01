@@ -10,7 +10,7 @@ SELECT
     , menu_item_id
     , quantity
     , unit_price
-    , price
+   -- , price
     , order_item_discount_amount
     , updated_at         AS load_timestamp
     , {{ add_meta_columns(source_name='tb_101') }}
